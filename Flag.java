@@ -1,3 +1,8 @@
+//************************************************************
+// Flag.java   
+//
+// Class that contains methods to print simple ASCII art
+//************************************************************
 public class Flag {
 
   public static void polishFlag() {

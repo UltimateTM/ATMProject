@@ -1,4 +1,8 @@
-
+//************************************************************
+// ATMProject.java    Author:  Gabriel Limberg, Adam Sarabia, Wyatt Ficek
+//
+// A somewhat simple ATM simulator that detects user input
+//************************************************************
 import java.util.Scanner;
 
 class Main {
@@ -6,59 +10,60 @@ class Main {
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
     boolean isCool = false;
-    boolean isValid = false;
+    boolean isValid = false;  // variables for the Main method
     int invalidAttempts = 0;
-    ATM test = new ATM();
 
-    clearScreen();
-    Flag.polishFlag();
+    ATM test = new ATM(); // creates the ATM object
+
+    clearScreen(); // calls upon the clearScreen() method near the bottom of the main class
+    Flag.polishFlag(); // ASCII art in Flag.java
     System.out.println("Welcome to the Mars branch of the Polish National Bank!");
     
-    do {
+    do { // verifies userinput from the scanner if it contains integers only
       System.out.println("Enter Your Pin to Complete a Transaction: ");
-      if (scan.hasNextInt()) {
+      if (scan.hasNextInt()) { // if scanner contains integers, then it goes to here.
 
-        if (test.verifyPin(scan.nextInt()) == true) {
+        if (test.verifyPin(scan.nextInt()) == true) { // if user inputs correct pin, then this equates to true
 
-          isValid = true;
+          isValid = true; // loop control variable
           
-          while (!isCool){
+          while (!isCool){ // while loop encompasses main code, helps determine if user wants to leave or stay in a session
 
-            test.getBalance();
+            test.getBalance(); // calls upon the getBalance method in ATM class using the object instantiation test
 
-            if (ATM.input.equalsIgnoreCase("w") || ATM.input.equalsIgnoreCase("Withdraw")) {
+            if (ATM.input.equalsIgnoreCase("w") || ATM.input.equalsIgnoreCase("Withdraw")) { // detects user input from the ATM class
               try {
-                test.withdraw();
-              } catch (InterruptedException e) {
+                test.withdraw(); // calls on the withdraw method in the ATM class using the object instantiation test
+              } catch (InterruptedException e) { // catches the error throw by the withdraw method
                 System.out.println("lol no");
               }
-            } else if (ATM.input.equalsIgnoreCase("d") || ATM.input.equalsIgnoreCase("Deposit")) {
+            } else if (ATM.input.equalsIgnoreCase("d") || ATM.input.equalsIgnoreCase("Deposit")) { // detects user input from the ATM class
               try {
                 test.deposit();
-              } catch (InterruptedException e) {
+              } catch (InterruptedException e) { // catches the error throw by the deposit method
                 System.out.println("lol no");
               }
-            } else if (ATM.input.equalsIgnoreCase("e") || ATM.input.equalsIgnoreCase("Exit")) {
+            } else if (ATM.input.equalsIgnoreCase("e") || ATM.input.equalsIgnoreCase("Exit")) { // detects user input from the ATM class, end program
               System.out.println("Thank you for using the Polish National Bank!");
               Flag.polishFlag();
-              System.exit(1);
-            } else if (ATM.input.equalsIgnoreCase("f") || ATM.input.equalsIgnoreCase("FastCash")) {
+              System.exit(1); // forcibly closes the program
+            } else if (ATM.input.equalsIgnoreCase("f") || ATM.input.equalsIgnoreCase("FastCash")) { // detects user input from the ATM class
               try {
                 test.fastCash();
-              } catch (InterruptedException e) {
+              } catch (InterruptedException e) { // catches the error throw by the fastCash method
                 System.out.println("lol no");
               }
-            } else if (ATM.input.equalsIgnoreCase("r")) {
+            } else if (ATM.input.equalsIgnoreCase("r")) { // easter egg by Adam
               Flag.robbery();
               isCool = true;
               System.exit(1);
             }
           }
-        } else {
+        } else { // if user inputs wrong code (only integers) then program states incorrect pin, only 3 attempts
           System.out.println("Incorrect pin.");
           invalidAttempts++;
 
-          switch (invalidAttempts) {
+          switch (invalidAttempts) { // switch statement for invalid attempts
             case 1:
             System.out.println("WARNING: You have 2 attempts left.");
             break;
@@ -72,18 +77,18 @@ class Main {
             break;
           }
         }  
-      } else {
+      } else { // detects if there is anything other than integers (doubles and string characters)
         System.out.println("Please enter a 4 digit integer only.");
         isValid = false;
         scan.next();
       }
-    } while (isValid != true);
+    } while (isValid != true); // end of do while loop
   
 
-    scan.close();
+    scan.close(); // closes scanner
   }
 
-  public static void clearScreen() {    
+  public static void clearScreen() { // clear console of any text   
   System.out.print("\033[H\033[2J");  
   System.out.flush();  
   } 
