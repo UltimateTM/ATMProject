@@ -24,8 +24,6 @@ class Main {
       if (scan.hasNextInt()) { // if scanner contains integers, then it goes to here.
 
         if (test.verifyPin(scan.nextInt()) == true) { // if user inputs correct pin, then this equates to true
-
-          isValid = true; // loop control variable
           
           while (!isCool){ // while loop encompasses main code, helps determine if user wants to leave or stay in a session
 
@@ -46,7 +44,8 @@ class Main {
             } else if (ATM.input.equalsIgnoreCase("e") || ATM.input.equalsIgnoreCase("Exit")) { // detects user input from the ATM class, end program
               System.out.println("Thank you for using the Polish National Bank!");
               Flag.polishFlag();
-              System.exit(1); // forcibly closes the program
+              isCool = true;
+              isValid = true; // loop control variables
             } else if (ATM.input.equalsIgnoreCase("f") || ATM.input.equalsIgnoreCase("FastCash")) { // detects user input from the ATM class
               try {
                 test.fastCash();
@@ -56,7 +55,7 @@ class Main {
             } else if (ATM.input.equalsIgnoreCase("r")) { // easter egg by Adam
               Flag.robbery();
               isCool = true;
-              System.exit(1);
+              isValid = true; // loop control variables
             }
           }
         } else { // if user inputs wrong code (only integers) then program states incorrect pin, only 3 attempts
@@ -73,7 +72,7 @@ class Main {
             break;
             case 3:
             System.out.println("Session terminated.");
-            System.exit(1);
+            isValid = true; // ends the program
             break;
           }
         }  
@@ -82,7 +81,7 @@ class Main {
         isValid = false;
         scan.next();
       }
-    } while (isValid != true); // end of do while loop
+    } while (isValid != true); // end of do while loop, if this equates to true then the program ends
   
 
     scan.close(); // closes scanner
