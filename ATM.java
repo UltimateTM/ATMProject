@@ -46,7 +46,7 @@ public class ATM {
     
 
     while (!isValid){ // while loop to detect userinput in account selection
-      System.out.println("Please enter a valid account. Checkings [C] or Savings [S]");
+      System.out.println("Please choose an account:\nCheckings [C] || Savings [S]");
       input = scan.next();
 
       if (input.equalsIgnoreCase("C") || input.equalsIgnoreCase("S") || input.equalsIgnoreCase("Checkings") || input.equalsIgnoreCase("Savings")){
@@ -69,7 +69,7 @@ public class ATM {
     }
 
     System.out.println("How many times would you like to withdraw from your " + choice + " account?\n(In $20 increments)");
-    withdrawalAmount = scan.nextInt() * 20; // if user it 5, it would basically be 5 * 20 since the person is asking for 5 $20 dollar bills
+    withdrawalAmount = scan.nextInt() * 20; // if user puts 5, it would basically be 5 * 20 since the person is asking for 5 $20 dollar bills
 
     // need a method to verify the depositAmount is not a double
     // need a method to catch any string inputs
@@ -123,7 +123,7 @@ public class ATM {
     
 
     while (!isValid){
-      System.out.println("Please enter a valid account. Checkings [C] or Savings [S]");
+      System.out.println("Please choose an account:\nCheckings [C] || Savings [S]");
       input = scan.next();
 
       if (input.equalsIgnoreCase("C") || input.equalsIgnoreCase("S") || input.equalsIgnoreCase("Checkings") || input.equalsIgnoreCase("Savings")){
@@ -226,7 +226,7 @@ public class ATM {
 
 
     while (!isValid){
-      System.out.println("Please enter a valid account. Checkings [C] or Savings [S]");
+      System.out.println("Please choose an account:\nCheckings [C] || Savings [S]");
       input = scan.next();
 
       if (input.equalsIgnoreCase("C") || input.equalsIgnoreCase("S") || input.equalsIgnoreCase("Checkings") || input.equalsIgnoreCase("Savings")){
