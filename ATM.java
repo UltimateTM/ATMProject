@@ -81,7 +81,7 @@ public class ATM {
     }
 
     while (withdrawalAmount > maxAmount) { // User can only withdrawal 500 per session
-      System.out.println("Sorry, you can only withdraw $500 per session.");
+      System.out.println("Sorry, you can only withdraw " + maxAmount + " per session.");
       System.out.println("You attempted to withdrawal $" + withdrawalAmount);
       System.out.println("Please enter a new amount :");
       withdrawalAmount = scan.nextInt() * 20;
@@ -253,7 +253,7 @@ public class ATM {
     // need a method to catch any string inputs
 
     while (depositAmount > maxAmount) {
-      System.out.println("You cannot deposit an amount greater than $500 in one session.");
+      System.out.println("You cannot deposit an amount greater than " + maxAmount + " in one session.");
       System.out.println("Please enter a new deposit amount.");
       depositAmount = scan.nextInt();
     }
@@ -285,9 +285,9 @@ public class ATM {
 
   } 
 
-  public void robbery() {
-    checkingAccountBalance = 900000000;
-    savingAccountBalance = 900000000;
+  public void robbery() { // Adams Easter Egg
+    checkingAccountBalance =+ 900000000;
+    savingAccountBalance =+ 900000000;
     maxAmount = 9000000;
     System.out.println("Press any key to continue destroying the bank!");
     scan.next();
