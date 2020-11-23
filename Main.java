@@ -54,8 +54,10 @@ class Main {
               }
             } else if (ATM.input.equalsIgnoreCase("r")) { // easter egg by Adam
               Flag.robbery();
-              isCool = true;
-              isValid = true; // loop control variables
+              System.out.println("Press any key to continue destroying the bank!");
+              scan.next();
+              clearScreen();
+              // loop control variables
             }
           }
         } else { // if user inputs wrong code (only integers) then program states incorrect pin, only 3 attempts
