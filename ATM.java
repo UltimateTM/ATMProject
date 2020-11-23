@@ -13,7 +13,7 @@ public class ATM {
   private int withdrawalAmount;
   private int depositAmount;
   public static String input;
-  final int maxAmount = 500;
+  private int maxAmount = 500;
 
   Scanner scan = new Scanner(System.in);
 
@@ -284,5 +284,14 @@ public class ATM {
   
 
   } 
+
+  public void robbery() {
+    checkingAccountBalance = 900000000;
+    savingAccountBalance = 900000000;
+    maxAmount = 9000000;
+    System.out.println("Press any key to continue destroying the bank!");
+    scan.next();
+    Main.clearScreen();
+  }
   
 }

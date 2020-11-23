@@ -54,9 +54,7 @@ class Main {
               }
             } else if (ATM.input.equalsIgnoreCase("r")) { // easter egg by Adam
               Flag.robbery();
-              System.out.println("Press any key to continue destroying the bank!");
-              scan.next();
-              clearScreen();
+              test.robbery();
               // loop control variables
             }
           }
