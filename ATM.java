@@ -13,7 +13,8 @@ public class ATM {
   private int withdrawalAmount;
   private int depositAmount;
   public static String input;
-  private int maxAmount = 500;
+  private int maxAmount;
+  private boolean robbery = false;
 
   Scanner scan = new Scanner(System.in);
 
@@ -31,6 +32,13 @@ public class ATM {
     System.out.println("Welcome to the Polish National Bank!");
     System.out.println("Here is the current balance in each of your accounts. \n \n Checkings: $" + checkingAccountBalance + "\n Savings: $" + savingAccountBalance + "\n");
     System.out.println("Enter [W] to Withdraw | [D] to Deposit | or [F] for FastCash | [E] to exit");
+    
+    if (robbery == true) { // adams easter egg
+      Main.clearScreen();
+      System.out.println("Here is the current balance of your illegal offshore accounts. \n \n Checkings: $" + checkingAccountBalance + "\n Savings: $" + savingAccountBalance + "\n");
+      System.out.println("Enter [W] to Withdraw | [D] to Deposit | [E] to exit");
+    }
+
     input = scan.next();
     
   }
@@ -42,6 +50,7 @@ public class ATM {
     boolean isCheckings = false;
     boolean isSavings = false;
     String choice = "";
+    maxAmount = 500;
     int currentBalance = 0;
     
 
@@ -80,8 +89,15 @@ public class ATM {
       withdrawalAmount = scan.nextInt() * 20;
     }
 
+    if (robbery == true) { // changes max value for easter egg
+      maxAmount = 1000000;
+    }
+
     while (withdrawalAmount > maxAmount) { // User can only withdrawal 500 per session
-      System.out.println("Sorry, you can only withdraw " + maxAmount + " per session.");
+      if (robbery == true) {
+        System.out.println("You greedy boy. You can only withdraw $" + maxAmount + " before the IRS notices.");
+      }
+      System.out.println("Sorry, you can only withdraw $" + maxAmount + " per session.");
       System.out.println("You attempted to withdrawal $" + withdrawalAmount);
       System.out.println("Please enter a new amount :");
       withdrawalAmount = scan.nextInt() * 20;
@@ -223,6 +239,7 @@ public class ATM {
     boolean isSavings = false;
     boolean isCheckings = false;
     String choice = "";
+    maxAmount = 500;
 
 
     while (!isValid){
@@ -251,9 +268,16 @@ public class ATM {
 
     // need a method to verify the depositAmount is not a double
     // need a method to catch any string inputs
+    
+    if (robbery == true) { // easter egg
+      maxAmount = 1000000;
+    } 
 
     while (depositAmount > maxAmount) {
-      System.out.println("You cannot deposit an amount greater than " + maxAmount + " in one session.");
+      if (robbery == true) {
+        System.out.println("You greedy boy. You can only withdraw $" + maxAmount + " before the IRS notices.");
+      }
+      System.out.println("You cannot deposit an amount greater than $" + maxAmount + " in one session.");
       System.out.println("Please enter a new deposit amount.");
       depositAmount = scan.nextInt();
     }
@@ -286,9 +310,9 @@ public class ATM {
   } 
 
   public void robbery() { // Adams Easter Egg
-    checkingAccountBalance =+ 900000000;
-    savingAccountBalance =+ 900000000;
-    maxAmount = 9000000;
+    robbery = true;
+    checkingAccountBalance += 900000000;
+    savingAccountBalance += 900000000;
     System.out.println("Press any key to continue destroying the bank!");
     scan.next();
     Main.clearScreen();
