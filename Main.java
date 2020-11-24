@@ -52,11 +52,7 @@ class Main {
               } catch (InterruptedException e) { // catches the error throw by the fastCash method
                 System.out.println("lol no");
               }
-            } else if (ATM.input.equalsIgnoreCase("r")) { // easter egg by Adam
-              Flag.robbery();
-              isCool = true;
-              isValid = true; // loop control variables
-            }
+            } 
           }
         } else { // if user inputs wrong code (only integers) then program states incorrect pin, only 3 attempts
           System.out.println("Incorrect pin.");
